@@ -19,8 +19,6 @@ h1 {
   margin-bottom: 20px;
  
 }
-
-/* Stats Section */
 .stats {
   display: flex;
   gap: 20px;
@@ -146,6 +144,73 @@ h1 {
   cursor: pointer;
 
 }
+
+@media screen and (min-width:577px) and (max-width:992px) {
+
+  .container {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .card p {
+    font-size: 16px;
+  }
+
+  .card h2 {
+    font-size: 22px;
+  }
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter button {
+    flex: 1;
+    min-width: 100px;
+  }
+  .job-card {
+    padding: 15px;
+  }
+
+  .job-card h3 {
+    font-size: 18px;
+  }
+
+  .position {
+    font-size: 16px;
+  }
+
+  .location {
+    font-size: 14px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .action{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .interview-btn,
+  .reject-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
 
 
   

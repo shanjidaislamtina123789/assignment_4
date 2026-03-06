@@ -13,19 +13,50 @@
   <div class="container">       
     <h1>Job Application Tracker</h1>
     <div class="stats">
-      <div class="card"><p>Total</p><h2>8</h2></div>
-      <div class="card"><p>Interview</p><h2 class="green">0</h2></div>
-      <div class="card"><p>Rejected</p><h2 class="red">0</h2></div>
+      <div class="card"><p>Total</p><h2 id="start-total">0</h2></div>
+      <div class="card"><p>Interview</p><h2 class="green" id="start-interview">0</h2></div>
+      <div class="card"><p>Rejected</p><h2 class="red" id="start-reject">0</h2></div>
     </div>
 
+    <div class="section-header">
     <h2 class="title">Available Jobs</h2>
+    <div class="job-count"><span id="section-count">8 jobs</span></div>
+    </div>
     <div class="filter">
-      <button class="active">All</button>
-      <button>Interview</button>
-      <button>Rejected</button>
+      <button 
+      id="tab-all"
+      onclick="switchTab('all')"
+      class="tab-active">All</button>
+      <button
+      id="tab-interview"
+      onclick="switchTab('interview')" class="tab-inactive">Interview</button>
+      <button
+      id="tab-rejected"
+      onclick="switchTab('rejected')" class="tab-inactive">Rejected</button>
     </div>
 
+    <div id="jobs-container">
+
+      <section id="no-all" class="no-jobs hidden">
+        <img src="jobs.png" alt="no jobs icon">
+        <p>No jobs available</p>
+        <small>Check back soon for new job opportunities</small>
+      </section>
+
+      <section id="no-interview" class="no-jobs hidden">
+        <img src="jobs.png" alt="no jobs icon">
+        <p>No jobs available</p>
+        <small>Check back soon for new job opportunities</small>
+      </section>
     
+    
+      <section id="no-rejected" class="no-jobs hidden">
+        <img src="jobs.png" alt="no jobs icon">
+        <p>No jobs available</p>
+        <small>Check back soon for new job opportunities</small>
+      </section>
+
+      <section class="hidden" id="all-container">
     <div class="job-card">
       <div class="content">
         <h3>Mobile First Corp</h3>
@@ -96,7 +127,7 @@
           <button class="reject-btn">REJECTED</button>
         </div>
       </div>
-      <button class="delete-btn"><img src ="delete.png"alt="delete button"></button>
+      <button class="delete-btn"><img src ="delete.png "alt="delete button"></button>
     </div>
 
     <div class="job-card">
@@ -148,8 +179,12 @@
           Experience with Node.js and React required. Great benefits and equity package included.
         </p>
         <div class="action">
-          <button class="interview-btn">INTERVIEW</button>
-          <button class="reject-btn">REJECTED</button>
+          <button 
+         
+          class="interview-btn">INTERVIEW</button>
+          <button 
+         
+          class="reject-btn">REJECTED</button>
         </div>
       </div>
       <button class="delete-btn"><img src ="delete.png"alt="delete button"></button>
@@ -173,7 +208,14 @@
       </div>
       <button class="delete-btn"><img src ="delete.png"alt="delete button"></button>
     </div>
+      </section>
 
+  <section class="hidden" id="interview-container"></section>
+  <section class="hidden" id="rejected-container"></section>
+   
+    </div>
+    
   </div>
+  <script src="script.js"></script>
 </body>
 </html>

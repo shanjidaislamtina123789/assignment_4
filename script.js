@@ -29,30 +29,29 @@ function switchTab(tab) {
   allContainer.classList.add("hidden");
   interviewContainer.classList.add("hidden");
   rejectedContainer.classList.add("hidden");
-  //noInterview.classList.add("hidden");
-  //noRejected.classList.add("hidden");
+  noInterview.classList.add("hidden");
+  noRejected.classList.add("hidden");
 
-  //const noAll = document.getElementById("no-all");
+  const noAll = document.getElementById("no-all");
 
   if(tab==="all"){
   allContainer.classList.remove("hidden");
-  //if(allContainer.querySelectorAll(".job-card").length < 1) {
-    //noAll.classList.remove("hidden");
-  //}
+  if(allContainer.querySelectorAll(".job-card").length < 1) {
+    noAll.classList.remove("hidden");
+  }
   }else if(tab==="interview"){
     interviewContainer.classList.remove("hidden");
-    //if(interviewContainer.querySelectorAll(".job-card").length < 1) {
-      //noInterview.classList.remove("hidden");
-    //}
+    if(interviewContainer.querySelectorAll(".job-card").length < 1) {
+      noInterview.classList.remove("hidden");
+    }
   }else{
     rejectedContainer.classList.remove("hidden");
-    //if(rejectedContainer.querySelectorAll(".job-card").length < 1) {
-      //noRejected.classList.remove("hidden");
-    //}
+    if(rejectedContainer.querySelectorAll(".job-card").length < 1) {
+      noRejected.classList.remove("hidden");
+    }
   }
   updateStat();
 }
-
 function updateStat(){
   const allCount = allContainer.querySelectorAll(".job-card").length;
   const interviewCount = interviewContainer.querySelectorAll(".job-card").length;
@@ -62,18 +61,21 @@ function updateStat(){
   interviewStat.innerText = interviewCount;
   rejectStat.innerText = rejectCount;
 
-  let count = 0;
+  let count=0;
+  document.getElementById("no-all").classList.add("hidden");
+  noInterview.classList.add("hidden");
+  noRejected.classList.add("hidden");
+
   if(currentTab === "all"){
     count = allCount;
-    document.getElementById("no-all").classList.toggle("hidden", allCount > 0);
+    if(allCount === 0) document.getElementById("no-all").classList.remove("hidden");
   } else if(currentTab === "interview"){
     count = interviewCount;
-    noInterview.classList.toggle("hidden", interviewCount > 0);
+    if(interviewCount === 0) noInterview.classList.remove("hidden");
   } else if(currentTab === "rejected"){
     count = rejectCount;
-    noRejected.classList.toggle("hidden", rejectCount > 0);
+    if(rejectCount === 0) noRejected.classList.remove("hidden");
   }
-
   availableState.innerText = count + " jobs";
 }
 totalStat.innerText=allContainer.querySelectorAll(".job-card").length;
@@ -100,7 +102,7 @@ document.getElementById("jobs-container").addEventListener("click", function(eve
     updateStat();
   }
 
-  if (clickedElement.closest(".delete-btn")) {
+  if(clickedElement.closest(".delete-btn")){
     parent.removeChild(card);
     updateStat();
   }
